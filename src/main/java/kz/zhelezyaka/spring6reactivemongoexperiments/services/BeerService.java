@@ -1,10 +1,13 @@
 package kz.zhelezyaka.spring6reactivemongoexperiments.services;
 
+import kz.zhelezyaka.spring6reactivemongoexperiments.domain.Beer;
 import kz.zhelezyaka.spring6reactivemongoexperiments.model.BeerDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BeerService {
+
+    Mono<BeerDTO> findFirstByBeerName(String beerName);
 
     Flux<BeerDTO> listBeers();
 
