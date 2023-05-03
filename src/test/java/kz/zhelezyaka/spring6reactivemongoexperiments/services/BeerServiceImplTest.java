@@ -39,6 +39,19 @@ class BeerServiceImplTest {
     }
 
     @Test
+    void testFindByBeerStyle() {
+        BeerDTO beerDTO = getSavedBeerDTO();
+        AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+
+        beerService.findByBeerStyle(beerDTO.getBeerStyle())
+                .subscribe(dto -> {
+                    System.out.println(dto.toString());
+                    atomicBoolean.set(true);
+                });
+        await().untilTrue(atomicBoolean);
+    }
+
+    @Test
     void findFirstByBeerNameTest() {
         AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         BeerDTO beerDTO = getSavedBeerDTO();
